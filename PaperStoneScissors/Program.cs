@@ -14,10 +14,13 @@ namespace PaperStoneScissors
             items[1] = "Scissors";
             items[2] = "Paper";
 
-            int coincidental = random.Next(items.Length);
-            string coincidental2 = items[coincidental];
+           
 
             while (ending) {
+
+                int coincidental = random.Next(items.Length);
+                string coincidental2 = items[coincidental];
+
                 foreach (var item in items)
                 {
                     Console.WriteLine((Array.IndexOf(items, item) + 1) + " " + item.ToString());
@@ -34,18 +37,19 @@ namespace PaperStoneScissors
                         continue;
                     }
                     Console.WriteLine("Your choice:" + items.GetValue(Choice - 1));
-                    Console.WriteLine("Сomputer choice:" + coincidental2);
+                    Console.WriteLine("Computer choice:" + coincidental2);
                     
 
-                    if (coincidental == ((Choice % 3) + coincidental))
+                    if ((coincidental+1) == Choice)
                     {
                         Console.WriteLine("You Draw");
                         ending = GameOver();
                         continue;
                     }
-                    int min = Choice - (coincidental+1);
+                    int newc = coincidental + 1;
+                    int min = Choice - newc;
                     Console.WriteLine(min);
-                    if (min == 1 || min == -1 || min == 2)
+                    if ( min == -1 || min == 2)
                     {
                         Console.WriteLine("You Win :)");
                         ending = GameOver();
