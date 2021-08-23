@@ -33,47 +33,31 @@ namespace PaperStoneScissors
                         Console.WriteLine("Invalid count. Try again!");
                         continue;
                     }
+                    Console.WriteLine("Your choice:" + items.GetValue(Choice - 1));
+                    Console.WriteLine("Сomputer choice:" + coincidental2);
+                    
+
+                    if (coincidental == ((Choice % 3) + coincidental))
+                    {
+                        Console.WriteLine("You Draw");
+                        ending = GameOver();
+                        continue;
+                    }
+                    int min = Choice - (coincidental+1);
+                    Console.WriteLine(min);
+                    if (min == 1 || min == -1 || min == 2)
+                    {
+                        Console.WriteLine("You Win :)");
+                        ending = GameOver();
+                        continue;
+                    }
+                    else
+                    {
+                        Console.WriteLine("You Lose :( ");
+                        ending = GameOver();
+                        continue;
+                    }
              
-                switch (Choice)
-                {
-                    case 1:
-                        Console.WriteLine("Stone vs {0}", coincidental2);
-
-                        if (coincidental2 != items[0] && coincidental2 != items[2])
-                            Console.WriteLine("You Win :)");
-
-
-                        else if (coincidental2 != items[0] && coincidental2 != items[1])
-                            Console.WriteLine("You Lose :( ");
-
-                        else
-                            Console.WriteLine("You Draw");
-                        ending = GameOver();
-
-                        break;
-                    case 2:
-                        Console.WriteLine("Scissors vs {0}", coincidental2);
-
-                        if (coincidental2 != items[1] && coincidental2 != items[0])
-                            Console.WriteLine("You Win :)");
-                        else if (coincidental2 != items[1] && coincidental2 != items[2])
-                            Console.WriteLine("You Lose :( ");
-                        else
-                            Console.WriteLine("You Draw");
-                        ending = GameOver();
-                        break;
-                    case 3:
-                        Console.WriteLine("Paper vs {0}", coincidental2);
-                        if (coincidental2 != items[2] && coincidental2 != items[1])
-                            Console.WriteLine("You Win :) ");
-                        else if (coincidental2 != items[2] && coincidental2 != items[0])
-                            Console.WriteLine("You Lose :( ");
-                        else
-                            Console.WriteLine("Draw!");
-                        ending = GameOver();
-                        break;
-                }
-
                 Console.ReadKey();
             }
                 catch (FormatException ex)
@@ -87,7 +71,6 @@ namespace PaperStoneScissors
             Console.WriteLine("Game Over!");
 
         }
-
 
         static bool GameOver()
         {
